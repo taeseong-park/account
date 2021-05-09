@@ -1,9 +1,13 @@
 package cop.planet.account.dto;
 
 import cop.planet.account.model.UserVo;
-import lombok.Data;
+import lombok.*;
 
 @Data
+@Getter
+@Setter
+@ToString
+@NoArgsConstructor
 public class AccountDto {
 
     private String id;
@@ -12,7 +16,7 @@ public class AccountDto {
     private String phoneNumber;
     private String updateDate;
 
-    public UserVo checkLogin(){
+    public UserVo toUserVo(){
         return UserVo.builder()
                 .id(id)
                 .pw(pw)
@@ -21,4 +25,5 @@ public class AccountDto {
                 .updateDate(updateDate)
                 .build();
     }
+
 }
