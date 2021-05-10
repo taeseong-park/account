@@ -3,6 +3,8 @@ package cop.planet.account.dto;
 import cop.planet.account.model.UserVo;
 import lombok.*;
 
+import java.time.LocalDateTime;
+
 @Data
 @Getter
 @Setter
@@ -14,7 +16,8 @@ public class AccountDto {
     private String pw;
     private String name;
     private String phoneNumber;
-    private String updateDate;
+    private LocalDateTime createDate;
+    private LocalDateTime updateDate;
 
     public UserVo toUserVo(){
         return UserVo.builder()
@@ -22,6 +25,7 @@ public class AccountDto {
                 .pw(pw)
                 .name(name)
                 .phoneNumber(phoneNumber)
+                .createDate(createDate)
                 .updateDate(updateDate)
                 .build();
     }

@@ -2,8 +2,11 @@ package cop.planet.account.model;
 
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 
 @Data
 @NoArgsConstructor
@@ -16,8 +19,7 @@ import javax.persistence.*;
 public class UserVo {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(nullable = false, length = 20, unique = true)
+    @Column(nullable = false, length = 20)
     private String id;
 
     @Column(nullable = false, length = 50)
@@ -30,9 +32,9 @@ public class UserVo {
     private String phoneNumber;
 
     @CreationTimestamp
-    private String createDate;
+    private LocalDateTime createDate;
 
-    @CreationTimestamp
-    private String updateDate;
+    @UpdateTimestamp
+    private LocalDateTime updateDate;
 
 }

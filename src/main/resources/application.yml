@@ -1,5 +1,12 @@
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
 ---
 spring:
+  main:
+    allow-bean-definition-overriding: true
   server:
     port: 8080
     servlet:
@@ -9,17 +16,18 @@ spring:
         charset: UTF-8
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/planet?serverTimezone=UTC&characterEncoding=UTF-8
+    url: jdbc:mysql://localhost:3306/planet?characterEncoding=UTF-8
     username: planet
     password: planet
-
   jpa:
     database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
     open-in-view: false
     show-sql: true
     hibernate:
       format_sql: true
-      ddl-auto: create
+      ddl-auto: update
+  jackson:
+    time-zone: Asia/Seoul
 ---
 logging:
   level:
