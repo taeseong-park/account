@@ -22,8 +22,6 @@ public class AccountController {
     @Autowired
     AccountService accountRestService;
 
-
-
     @GetMapping("/")
     public String index(UserVo userVo){
         String result = "null";
@@ -32,11 +30,11 @@ public class AccountController {
         return result;
     }
 
-    @GetMapping("/login")
-    public String login(AccountDto input) throws Exception{
+    @GetMapping("/insert/{id}")
+    public String login(@PathVariable String id) throws Exception{
 
         AccountDto accountDto = new AccountDto();
-        accountDto.setId("123456");
+        accountDto.setId(id);
         accountDto.setPw("abcdef");
         accountDto.setName("테스트");
         accountDto.setPhoneNumber("0263606630");
@@ -49,8 +47,17 @@ public class AccountController {
         return result;
     }
 
+    @GetMapping("/loginCheck")
+    public String loginCheck(AccountDto input) throws Exception{
 
-    public static void main(String[] args) {
-        SpringApplication.run(AccountController.class, args);
+        input.setId("123456");
+        input.setPw("abcdef");
+        log.info(input.toString());
+
+        UserVo result = accountRestService.checkLogin(input);
+
+        log.info(result.toString());
+        return result.toString();
     }
+
 }
