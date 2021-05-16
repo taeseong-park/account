@@ -18,19 +18,18 @@ public class AccountServiceImpl implements AccountService {
     private AccountRepository accountRepository;
 
     @Override
-    @Transactional
-    public String saveid(AccountDto accountDto) throws Exception{
-        log.info("들어오긴 들어왔어");
-        log.info(accountDto.toString());
-
-        return accountRepository.save(accountDto.toUserVo()).getId();
-    }
-
-    @Override
     public UserVo checkLogin(AccountDto input) throws Exception {
         UserVo userVo = new UserVo();
 
         userVo = accountRepository.findByIdPw(input.getId(), input.getPw());
         return userVo;
+    }
+
+    @Override
+    public String signIn(AccountDto accountDto) throws Exception {
+        log.info("들어오긴 들어왔어");
+        log.info(accountDto.toString());
+
+        return accountRepository.save(accountDto.toUserVo()).getId();
     }
 }

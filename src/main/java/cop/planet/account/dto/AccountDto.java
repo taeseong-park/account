@@ -15,7 +15,6 @@ public class AccountDto {
     private String id;
     private String pw;
     private String name;
-    private String groupCode;
     private String phoneNumber;
     private LocalDateTime createDate;
     private LocalDateTime updateDate;
@@ -24,7 +23,6 @@ public class AccountDto {
         return UserVo.builder()
                 .id(id)
                 .pw(pw)
-                .groupCode(groupCode)
                 .name(name)
                 .phoneNumber(phoneNumber)
                 .createDate(createDate)

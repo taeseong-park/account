@@ -24,9 +24,6 @@ public class UserVo {
     @Column(nullable = false, length = 50)
     private String pw;
 
-    @Column(length = 10)
-    private String groupCode;
-
     @Column(length = 45)
     private String name;
 

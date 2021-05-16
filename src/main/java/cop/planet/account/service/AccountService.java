@@ -5,6 +5,6 @@ import cop.planet.account.model.UserVo;
 
 public interface AccountService {
 
-    public String saveid(AccountDto accountDto) throws Exception;
     public UserVo checkLogin(AccountDto accountDto) throws Exception;
+    public String signIn(AccountDto accountDto) throws Exception;
 }

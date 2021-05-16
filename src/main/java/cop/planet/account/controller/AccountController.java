@@ -28,21 +28,53 @@ public class AccountController {
         return result;
     }
 
-    @GetMapping("/insert/{id}")
-    public String login(@PathVariable String id) throws Exception{
-
-        AccountDto accountDto = new AccountDto();
-        accountDto.setId(id);
-        accountDto.setPw("abcdef");
-        accountDto.setName("테스트");
-        accountDto.setPhoneNumber("0263606630");
-
-        log.info(accountDto.toString());
-
-        String result = accountRestService.saveid(accountDto);
+    @PostMapping("/signIn")
+    public String signIn(@RequestBody AccountDto accountDto) throws Exception{
+        String result = null;
+        try {
+            log.info(accountDto.toString());
+        }catch(Exception e){
+            log.info("어디지111111111111111111111111");
+        }
+        try {
+            result = accountRestService.signIn(accountDto);
+        }catch(Exception e){
+            log.info("어디지111111111111111111111112");
+        }
 
         log.info(result);
-        return result;
+        if(accountDto.getId().equals(result)) {
+            log.info("Success");
+            return "Success";
+        } else{
+            log.info("Fail");
+            return "Fail";
+        }
+    }
+
+
+    @PostMapping("/changePw")
+    public String changePw(@RequestBody AccountDto accountDto) throws Exception{
+        String result = null;
+        try {
+            log.info(accountDto.toString());
+        }catch(Exception e){
+            log.info("어디지111111111111111111111111");
+        }
+        try {
+            result = accountRestService.signIn(accountDto);
+        }catch(Exception e){
+            log.info("어디지111111111111111111111112");
+        }
+
+        log.info(result);
+        if(accountDto.getId().equals(result)) {
+            log.info("Success");
+            return "Success";
+        } else{
+            log.info("Fail");
+            return "Fail";
+        }
     }
 
     @GetMapping("/loginCheck")
